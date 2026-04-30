@@ -300,6 +300,25 @@
             color: #fff;
             font-size: 0.85em;
         }
+
+        /* 查看解析按钮 */
+        .toggle-detail-btn {
+            margin-top: 10px;
+            padding: 5px 14px;
+            background: var(--ps-blue);
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .toggle-detail-btn:hover {
+            background: #0088cc;
+        }
+        .toggle-detail-btn.active {
+            background: var(--warning-red);
+        }
     </style>
 </head>
 <body>
@@ -333,24 +352,7 @@
             <div class="grid-2x2">
                 <div class="grid-item" data-zoom="1">
                     <button class="zoom-btn" onclick="toggleZoom(1)" title="放大讲解">⛶</button>
-                    <img src="./case/1.jpg" alt="海报1">
-                    <div class="grid-item-content">
-                        <h3 style="color: var(--ps-blue); font-size: 1rem; margin-bottom: 8px;">元素</h3>
-                        <p class="analysis-text">
-啤酒→"喝酒"<br>
-小汽车→"开车"<br>
-骷髅→ "死亡、危险"<br>
-<span style="color: #ffd700; font-weight: bold;">"喝酒 + 开车 = 危险"</span></p>
-                        <h3 style="color: var(--ps-blue); font-size: 1rem; margin: 12px 0 8px;">色彩</h3>
-                        <p class="analysis-text">黑白灰、黄<br>
-干净、简单的画面，反而让那个骷髅的更严肃、更有冲击力。</p>
-                        <h3 style="color: var(--ps-blue); font-size: 1rem; margin: 12px 0 8px;">巧思</h3>
-                        <p class="analysis-text">危险藏在酒杯中</p>
-                    </div>
-                </div>
-                <div class="grid-item" data-zoom="2">
-                    <button class="zoom-btn" onclick="toggleZoom(2)" title="放大讲解">⛶</button>
-                    <img src="./case/2.jpg" alt="海报2">
+                    <img src="./case/2.jpg" alt="海报1">
                     <div class="grid-item-content">
                         <h3 style="color: var(--ps-blue); font-size: 1rem; margin-bottom: 8px;">元素</h3>
                         <p class="analysis-text">
@@ -364,28 +366,23 @@
                         <p class="analysis-text">一开始看到的是一个抽烟的人，往下看，他的下半部分剪影肺部已经被烧穿。</p>
                     </div>
                 </div>
-                <div class="grid-item" data-zoom="3">
-                    <button class="zoom-btn" onclick="toggleZoom(3)" title="放大讲解">⛶</button>
-                    <img src="./case/3.jpg" alt="海报3">
+                <div class="grid-item" data-zoom="2">
+                    <button class="zoom-btn" onclick="toggleZoom(2)" title="放大讲解">⛶</button>
+                    <img src="./case/3.jpg" alt="创意2">
                     <div class="grid-item-content">
                         <h3 style="color: var(--ps-blue); font-size: 1rem; margin-bottom: 8px;">元素</h3>
-                        <p class="analysis-text" style="min-height: 1em;"></p>
+                        <p class="analysis-text toggle-text" style="display: none;">
+左半侧：燃烧、冒烟<br>
+右半侧：森林与河流</p>
                         <h3 style="color: var(--ps-blue); font-size: 1rem; margin: 12px 0 8px;">色彩</h3>
-                        <p class="analysis-text" style="min-height: 1em;"></p>
+                        <p class="analysis-text toggle-text" style="display: none;">
+左侧：红、橙、黑、灰，火焰与浓烟的色调<br>
+右侧：绿、蓝、白，森林与河流的色调<br>
+整体底色：干净的浅绿色，让对比更突出</p>
                         <h3 style="color: var(--ps-blue); font-size: 1rem; margin: 12px 0 8px;">巧思</h3>
-                        <p class="analysis-text" style="min-height: 1em;"></p>
-                    </div>
-                </div>
-                <div class="grid-item" data-zoom="4">
-                    <button class="zoom-btn" onclick="toggleZoom(4)" title="放大讲解">⛶</button>
-                    <img src="./case/4.jpg" alt="海报4">
-                    <div class="grid-item-content">
-                        <h3 style="color: var(--ps-blue); font-size: 1rem; margin-bottom: 8px;">元素</h3>
-                        <p class="analysis-text" style="min-height: 1em;"></p>
-                        <h3 style="color: var(--ps-blue); font-size: 1rem; margin: 12px 0 8px;">色彩</h3>
-                        <p class="analysis-text" style="min-height: 1em;"></p>
-                        <h3 style="color: var(--ps-blue); font-size: 1rem; margin: 12px 0 8px;">巧思</h3>
-                        <p class="analysis-text" style="min-height: 1em;"></p>
+                        <p class="analysis-text toggle-text" style="display: none;">
+第一眼看到的是左右拼接的肺部，通过 "一毁一荣" 的强烈对比，具象成了看得见的 "毁灭 vs 新生"。</p>
+                        <button class="toggle-detail-btn" onclick="toggleDetail(this)">📖 查看解析</button>
                     </div>
                 </div>
             </div>
@@ -425,14 +422,12 @@
 
 
         <section>
-            <h2>四、 参考效果库</h2>
+            <h2>四、 火焰艺术字</h2>
             <p style="color: var(--text-gray); margin-bottom: 20px;">这里为你提供了三种最常用于禁烟海报的特效。挑选适合你创意的特效，参考下列步骤进行合成与尝试。</p>
             
             <div class="effect-container">
                 
                 <div class="effect-card">
-                    <h4>一：火焰效果</h4>
-                    <p style="font-size: 0.85rem; color: #aaa; text-align: center;">表现烟雾缠绕主体、吞噬健康的立体感</p>
                     <div class="step-mini-grid step-mini-grid-3">
                         <div class="step-item">
                             <img src="./step/1-2.png" alt="添加图层蒙版">
@@ -449,35 +444,6 @@
                     </div>
                 </div>
 
-                <div class="effect-card">
-                    <h4 style="color: #ff6b81;">二：烟雾弥散</h4>
-                    <p style="font-size: 0.85rem; color: #aaa; text-align: center;">隐喻生命或钞票随烟草一同燃烧</p>
-                    <div class="step-mini-grid step-mini-grid-2">
-                        <div class="step-item">
-                            <img src="./step/2-1.png" alt="抠出燃烧主体">
-                            <span class="step-desc">1. 点击滤镜→模糊画廊<br>路径模糊</span>
-                        </div>
-                        <div class="step-item">
-                            <img src="./step/2-2.png" alt="叠加火焰效果">
-                            <span class="step-desc">2. 调整曲线<br>调整参数达到烟雾效果</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="effect-card">
-                    <h4 style="color: #a4b0be;">三：灰烬飞散粒子</h4>
-                    <p style="font-size: 0.85rem; color: #aaa; text-align: center;">体现抽烟等于时间与健康的灰飞烟灭</p>
-                    <div class="step-mini-grid step-mini-grid-2">
-                        <div class="step-item">
-                            <img src="./step/3-1.png" alt="液化拉伸">
-                            <span class="step-desc">1. 在上一张的烟雾基础上<br>添加溶解效果</span>
-                        </div>
-                        <div class="step-item">
-                            <img src="./step/3-2.png" alt="粉尘画笔点涂">
-                            <span class="step-desc">2. 可叠加之前的图<br>图层蒙版做擦除效果</span>
-                        </div>
-                    </div>
-                </div>
 
             </div>
         </section>
@@ -522,6 +488,14 @@
                 btn.classList.add('active');
                 zoomStates[key] = true;
             }
+        }
+
+        function toggleDetail(btn) {
+            const texts = btn.parentElement.querySelectorAll('.toggle-text');
+            const isHidden = texts[0].style.display === 'none';
+            texts.forEach(t => t.style.display = isHidden ? '' : 'none');
+            btn.textContent = isHidden ? '✕ 收起解析' : '📖 查看解析';
+            btn.classList.toggle('active');
         }
 
         function toggleCompare(btn) {
